@@ -1,0 +1,94 @@
+:root {
+  --iti-blue: #0b5ed7;
+  --iti-green: #198754;
+  --iti-light: #f5f7fb;
+  --iti-dark: #0d1b2a;
+}
+
+body {
+  font-family: "Poppins", "Segoe UI", system-ui, sans-serif;
+  background-color: #fff;
+  color: #1a1a1a;
+}
+
+.navbar {
+  box-shadow: 0 8px 16px rgba(13, 27, 42, 0.08);
+}
+
+.hero-banner {
+  background: linear-gradient(120deg, rgba(11, 94, 215, 0.92), rgba(25, 135, 84, 0.92)), url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;
+  color: #fff;
+  border-radius: 24px;
+  padding: 60px 48px;
+}
+
+.section-title {
+  font-weight: 700;
+  color: var(--iti-dark);
+}
+
+.quick-links a {
+  text-decoration: none;
+  color: var(--iti-dark);
+  font-weight: 600;
+}
+
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(13, 27, 42, 0.12);
+}
+
+.badge-soft {
+  background: rgba(11, 94, 215, 0.12);
+  color: var(--iti-blue);
+}
+
+.info-strip {
+  background: var(--iti-light);
+  border-radius: 18px;
+}
+
+.footer {
+  background: var(--iti-dark);
+  color: #d8e3f0;
+}
+
+.footer a {
+  color: #d8e3f0;
+  text-decoration: none;
+}
+
+.table thead {
+  background: var(--iti-light);
+}
+
+.gallery-img {
+  border-radius: 16px;
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.login-card {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.notice-list li {
+  margin-bottom: 12px;
+}
+
+.timeline {
+  border-left: 3px solid var(--iti-green);
+  padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .hero-banner {
+    padding: 40px 28px;
+  }
+}
