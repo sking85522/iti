@@ -1,0 +1,172 @@
+:root {
+    --iti-blue: #0c4da2;
+    --iti-green: #1a8f5a;
+    --iti-light: #f4f8ff;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: #1d1d1d;
+    background-color: #fff;
+}
+
+.top-bar {
+    background: linear-gradient(90deg, var(--iti-blue), var(--iti-green));
+    color: #fff;
+}
+
+.top-bar a {
+    color: #fff;
+}
+
+.logo-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--iti-blue);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.navbar .nav-link {
+    font-weight: 500;
+    color: #1d1d1d;
+}
+
+.navbar .nav-link.active,
+.navbar .nav-link:hover {
+    color: var(--iti-blue);
+}
+
+.hero-carousel .carousel-item {
+    min-height: 480px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(12, 77, 162, 0.65);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.section-title {
+    color: var(--iti-blue);
+}
+
+.info-card {
+    border: 1px solid #e4e9f2;
+    border-radius: 16px;
+    padding: 24px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(12, 77, 162, 0.08);
+}
+
+.notice-list li {
+    border-bottom: 1px dashed #dbe2f0;
+    padding: 10px 0;
+}
+
+.quick-link {
+    border-radius: 12px;
+    background: var(--iti-light);
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #1d1d1d;
+    text-decoration: none;
+}
+
+.quick-link i {
+    font-size: 1.4rem;
+    color: var(--iti-green);
+}
+
+.trade-card {
+    border: 1px solid #e8edf5;
+    border-radius: 16px;
+    padding: 20px;
+    height: 100%;
+    background: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trade-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(12, 77, 162, 0.12);
+}
+
+.badge-soft {
+    background: rgba(12, 77, 162, 0.1);
+    color: var(--iti-blue);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.site-footer {
+    background: #0a1a34;
+    color: #fff;
+}
+
+.site-footer a {
+    color: #d3e4ff;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: #fff;
+}
+
+.social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-light {
+    background: var(--iti-light);
+}
+
+.table thead {
+    background: var(--iti-blue);
+    color: #fff;
+}
+
+.gallery-grid img {
+    border-radius: 16px;
+}
+
+.login-card {
+    border: 1px solid #e4e9f2;
+    border-radius: 16px;
+    padding: 28px;
+    background: #fff;
+}
+
+@media (max-width: 768px) {
+    .hero-carousel .carousel-item {
+        min-height: 360px;
+    }
+}
