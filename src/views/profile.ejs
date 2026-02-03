@@ -1,0 +1,47 @@
+<%- include('partials/header') %>
+<section class="page-hero">
+  <div class="container">
+    <h1>Your profile</h1>
+    <p>Manage your personal details and language preference.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container narrow">
+    <form class="form-card" method="POST" action="/profile">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <% if (errors.length) { %>
+        <div class="alert">
+          <% errors.forEach(function(error) { %>
+            <p><%= error.msg %></p>
+          <% }) %>
+        </div>
+      <% } %>
+      <div class="form-row">
+        <label>UID</label>
+        <input type="text" value="<%= user.uid %>" disabled />
+      </div>
+      <div class="form-row">
+        <label>Name</label>
+        <input type="text" name="name" value="<%= user.name %>" required />
+      </div>
+      <div class="form-row">
+        <label>Email</label>
+        <input type="email" name="email" value="<%= user.email %>" required />
+      </div>
+      <div class="form-row">
+        <label>Photo URL</label>
+        <input type="url" name="photo_url" value="<%= user.photo_url || '' %>" />
+      </div>
+      <div class="form-row">
+        <label>Language</label>
+        <select name="language">
+          <% supportedLanguages.forEach(function(lang) { %>
+            <option value="<%= lang %>" <%= user.language === lang ? 'selected' : '' %>><%= lang.toUpperCase() %></option>
+          <% }) %>
+        </select>
+      </div>
+      <button type="submit" class="button primary">Save changes</button>
+    </form>
+  </div>
+</section>
+<%- include('partials/footer') %>

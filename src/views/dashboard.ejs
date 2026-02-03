@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+<section class="page-hero">
+  <div class="container">
+    <h1>Welcome, <%= user.name %></h1>
+    <p>Your personalized Techelevatex dashboard.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container card-grid">
+    <article class="card">
+      <h3>Profile</h3>
+      <p>Update your details, language preferences, and photo.</p>
+      <a class="button ghost" href="/profile">Manage profile</a>
+    </article>
+    <article class="card">
+      <h3>Resources</h3>
+      <p>Access Hindi learning resources and workflow templates.</p>
+      <a class="button ghost" href="/blog">Explore resources</a>
+    </article>
+    <% if (user.role === 'admin') { %>
+      <article class="card">
+        <h3>Admin Panel</h3>
+        <p>Manage users, workers, and site settings.</p>
+        <a class="button ghost" href="/admin">Open admin panel</a>
+      </article>
+    <% } %>
+    <% if (user.role === 'worker' || user.role === 'admin') { %>
+      <article class="card">
+        <h3>Worker Panel</h3>
+        <p>Review tasks assigned to you by the admin team.</p>
+        <a class="button ghost" href="/worker">Open worker panel</a>
+      </article>
+    <% } %>
+  </div>
+</section>
+<%- include('partials/footer') %>

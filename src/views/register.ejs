@@ -1,0 +1,36 @@
+<%- include('partials/header') %>
+<section class="page-hero">
+  <div class="container">
+    <h1>Create your account</h1>
+    <p>Join Techelevatex and access our resources and dashboards.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container narrow">
+    <form class="form-card" method="POST" action="/register">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <% if (errors.length) { %>
+        <div class="alert">
+          <% errors.forEach(function(error) { %>
+            <p><%= error.msg %></p>
+          <% }) %>
+        </div>
+      <% } %>
+      <div class="form-row">
+        <label>Name</label>
+        <input type="text" name="name" value="<%= form.name || '' %>" required />
+      </div>
+      <div class="form-row">
+        <label>Email</label>
+        <input type="email" name="email" value="<%= form.email || '' %>" required />
+      </div>
+      <div class="form-row">
+        <label>Password</label>
+        <input type="password" name="password" required />
+      </div>
+      <button type="submit" class="button primary">Register</button>
+      <p class="helper">Already have an account? <a href="/login">Sign in</a>.</p>
+    </form>
+  </div>
+</section>
+<%- include('partials/footer') %>

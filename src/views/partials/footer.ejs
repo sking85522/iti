@@ -1,0 +1,27 @@
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <h4>Techelevatex</h4>
+        <p><%= t('footer.tagline') %></p>
+      </div>
+      <div>
+        <h5>Contact</h5>
+        <p>hello@techelevatex.in</p>
+        <p>Remote-first · India</p>
+      </div>
+      <div>
+        <h5>Language</h5>
+        <form action="/language" method="POST" class="inline-form">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <select name="language" onchange="this.form.submit()">
+            <% supportedLanguages.forEach(function(lang) { %>
+              <option value="<%= lang %>" <%= language === lang ? 'selected' : '' %>><%= lang.toUpperCase() %></option>
+            <% }) %>
+          </select>
+        </form>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+<section class="page-hero">
+  <div class="container">
+    <h1>Welcome back</h1>
+    <p>Access your personalized Techelevatex dashboard.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container narrow">
+    <form class="form-card" method="POST" action="/login">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+      <% if (errors.length) { %>
+        <div class="alert">
+          <% errors.forEach(function(error) { %>
+            <p><%= error.msg %></p>
+          <% }) %>
+        </div>
+      <% } %>
+      <div class="form-row">
+        <label>Email</label>
+        <input type="email" name="email" value="<%= form.email || '' %>" required />
+      </div>
+      <div class="form-row">
+        <label>Password</label>
+        <input type="password" name="password" required />
+      </div>
+      <button type="submit" class="button primary">Sign in</button>
+      <p class="helper">New to Techelevatex? <a href="/register">Create an account</a>.</p>
+    </form>
+  </div>
+</section>
+<%- include('partials/footer') %>
