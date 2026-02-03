@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "resources": "Resources",
+    "contact": "Contact"
+  },
+  "hero": {
+    "headline": "Empowering Education and Technology with Scalable Solutions",
+    "cta": "Get Started with Techelevatex"
+  }
+}

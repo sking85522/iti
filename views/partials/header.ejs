@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="<%= language %>">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= title %> | Techelevatex</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="logo" href="/">Techelevatex</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/services">Services</a>
+        <a href="/blog">Resources</a>
+        <a href="/contact">Contact</a>
+        <% if (!currentUser) { %>
+          <a class="button ghost" href="/login">Login</a>
+          <a class="button primary" href="/register">Get Started</a>
+        <% } else { %>
+          <a class="button ghost" href="/dashboard">Dashboard</a>
+          <form class="inline" action="/logout" method="POST">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+            <button class="button primary" type="submit">Logout</button>
+          </form>
+        <% } %>
+      </nav>
+    </div>
+  </header>
+  <main>
