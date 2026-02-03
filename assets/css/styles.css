@@ -1,0 +1,95 @@
+:root {
+  --iti-blue: #0b5ed7;
+  --iti-green: #1f9d55;
+  --iti-light: #f7f9fc;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background-color: #ffffff;
+  color: #1b1f23;
+}
+
+.top-bar {
+  background-color: var(--iti-light);
+  border-bottom: 1px solid #e1e6ef;
+}
+
+.logo-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--iti-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.hero {
+  background: linear-gradient(120deg, rgba(11, 94, 215, 0.85), rgba(31, 157, 85, 0.85)), url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1400&q=60") center/cover no-repeat;
+  color: #ffffff;
+  padding: 90px 0;
+}
+
+.section-title {
+  font-weight: 700;
+  color: var(--iti-blue);
+}
+
+.card-shadow {
+  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.08);
+  border: none;
+}
+
+.badge-green {
+  background: var(--iti-green);
+}
+
+.notice-board {
+  background: #ffffff;
+  border-left: 5px solid var(--iti-green);
+}
+
+.footer {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 40px 0 20px;
+}
+
+.footer a {
+  color: #e2e8f0;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: #ffffff;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > * {
+  --bs-table-bg-type: #f2f6ff;
+}
+
+.gallery-grid img {
+  border-radius: 12px;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.login-card {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.map-placeholder {
+  background: #e2e8f0;
+  height: 260px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  font-weight: 600;
+}
