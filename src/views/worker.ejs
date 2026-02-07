@@ -1,0 +1,48 @@
+<%- include('partials/header') %>
+<section class="page-hero">
+  <div class="container">
+    <h1>Worker Panel</h1>
+    <p>Update assigned tasks and manage workflow status.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Task</th>
+          <th>Status</th>
+          <th>Update</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (tasks.length === 0) { %>
+          <tr>
+            <td colspan="4">No tasks assigned yet.</td>
+          </tr>
+        <% } %>
+        <% tasks.forEach(function(task) { %>
+          <tr>
+            <td><%= task.worker_id %></td>
+            <td><%= task.assigned_tasks %></td>
+            <td><%= task.status %></td>
+            <td>
+              <form method="POST" action="/worker/tasks">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                <input type="hidden" name="worker_id" value="<%= task.worker_id %>" />
+                <select name="status">
+                  <option value="active" <%= task.status === 'active' ? 'selected' : '' %>>Active</option>
+                  <option value="paused" <%= task.status === 'paused' ? 'selected' : '' %>>Paused</option>
+                  <option value="completed" <%= task.status === 'completed' ? 'selected' : '' %>>Completed</option>
+                </select>
+                <button type="submit" class="button ghost">Save</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </div>
+</section>
+<%- include('partials/footer') %>

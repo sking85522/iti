@@ -1,0 +1,116 @@
+<%- include('partials/header') %>
+<section class="page-hero">
+  <div class="container">
+    <h1>Admin Panel</h1>
+    <p>Manage users, workers, and platform settings.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="panel-grid">
+      <div class="card">
+        <h3>User Management</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>UID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Language</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach(function(user) { %>
+              <tr>
+                <td><%= user.uid %></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.role %></td>
+                <td><%= user.language %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <form class="form-card" method="POST" action="/admin/users">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <div class="form-row">
+            <label>UID</label>
+            <input type="text" name="uid" required />
+          </div>
+          <div class="form-row">
+            <label>Role</label>
+            <select name="role">
+              <option value="admin">Admin</option>
+              <option value="worker">Worker</option>
+              <option value="user">User</option>
+            </select>
+          </div>
+          <button type="submit" class="button ghost">Update role</button>
+        </form>
+        <form class="form-card" method="POST" action="/admin/users/delete">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <div class="form-row">
+            <label>UID to delete</label>
+            <input type="text" name="uid" required />
+          </div>
+          <button type="submit" class="button danger">Delete user</button>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Worker Assignments</h3>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>User UID</th>
+              <th>Assigned Tasks</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% workers.forEach(function(worker) { %>
+              <tr>
+                <td><%= worker.worker_id %></td>
+                <td><%= worker.user_uid %></td>
+                <td><%= worker.assigned_tasks %></td>
+                <td><%= worker.status %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        <form class="form-card" method="POST" action="/admin/workers">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <div class="form-row">
+            <label>User UID</label>
+            <input type="text" name="user_uid" required />
+          </div>
+          <div class="form-row">
+            <label>Assigned tasks</label>
+            <input type="text" name="assigned_tasks" required />
+          </div>
+          <div class="form-row">
+            <label>Status</label>
+            <select name="status">
+              <option value="active">Active</option>
+              <option value="paused">Paused</option>
+              <option value="completed">Completed</option>
+            </select>
+          </div>
+          <button type="submit" class="button ghost">Add worker</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section alt">
+  <div class="container">
+    <h2>Recent Admin Logs</h2>
+    <ul class="log-list">
+      <% logs.forEach(function(log) { %>
+        <li><%= log.action %> · <%= new Date(log.created_at).toLocaleString() %></li>
+      <% }) %>
+    </ul>
+  </div>
+</section>
+<%- include('partials/footer') %>

@@ -1,0 +1,17 @@
+{
+  "nav.home": "Home",
+  "nav.about": "About",
+  "nav.services": "Services",
+  "nav.resources": "Resources",
+  "nav.contact": "Contact",
+  "nav.login": "Login",
+  "nav.dashboard": "Dashboard",
+  "hero.title": "Empowering Education and Technology with Scalable Solutions",
+  "hero.subtitle": "Exam panel management, workflow optimization, cloud hosting, and professional branding for modern education and business.",
+  "cta.primary": "Get Started with Techelevatex",
+  "section.focus": "Focus Areas",
+  "section.services": "Core Services",
+  "section.mission": "Mission",
+  "section.mission.body": "We champion fairness, transparency, and accessibility in education and technical workflows.",
+  "footer.tagline": "Techelevatex · Technology branding and scalable solutions"
+}
