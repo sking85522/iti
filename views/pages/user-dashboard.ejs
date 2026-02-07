@@ -1,0 +1,44 @@
+<%- include('../partials/header') %>
+<section class="page-hero">
+  <div class="container">
+    <h1>Hello, <%= user.name %></h1>
+    <p>Your personalized dashboard for Techelevatex resources.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container grid-3">
+    <div class="card">
+      <h3>Your UID</h3>
+      <p><%= user.uid %></p>
+    </div>
+    <div class="card">
+      <h3>Language Preference</h3>
+      <p><%= user.language.toUpperCase() %></p>
+    </div>
+    <div class="card">
+      <h3>Profile</h3>
+      <p>Update your details and photo.</p>
+      <a href="/profile">Manage profile</a>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2>Recommended Resources</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h4>Exam Workflow Guide</h4>
+        <p>Learn best practices for panel management.</p>
+      </div>
+      <div class="card">
+        <h4>Hindi Study Packs</h4>
+        <p>Access curated Hindi educational resources.</p>
+      </div>
+      <div class="card">
+        <h4>Cloud Starter Kit</h4>
+        <p>Launch your first scalable deployment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

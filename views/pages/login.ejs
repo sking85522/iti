@@ -1,0 +1,26 @@
+<%- include('../partials/header') %>
+<section class="section auth">
+  <div class="container">
+    <div class="auth-card">
+      <h1>Welcome back</h1>
+      <p>Access your Techelevatex dashboard.</p>
+      <% if (errors.length) { %>
+        <div class="alert">
+          <% errors.forEach(error => { %>
+            <p><%= error.msg %></p>
+          <% }) %>
+        </div>
+      <% } %>
+      <form method="POST" action="/login">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <label>Email</label>
+        <input type="email" name="email" value="<%= values.email || '' %>" required />
+        <label>Password</label>
+        <input type="password" name="password" required />
+        <button class="button primary" type="submit">Login</button>
+      </form>
+      <p class="small">New here? <a href="/register">Create an account</a></p>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

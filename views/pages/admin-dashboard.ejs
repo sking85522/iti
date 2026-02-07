@@ -1,0 +1,51 @@
+<%- include('../partials/header') %>
+<section class="page-hero">
+  <div class="container">
+    <h1>Admin Panel</h1>
+    <p>Overview, analytics, and control center.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container grid-3">
+    <div class="card">
+      <h3>Total Users</h3>
+      <p><%= stats.totalUsers %></p>
+    </div>
+    <div class="card">
+      <h3>Active Workers</h3>
+      <p><%= stats.totalWorkers %></p>
+    </div>
+    <div class="card">
+      <h3>Quick Actions</h3>
+      <a href="/admin/users">Manage Users</a><br />
+      <a href="/admin/workers">Manage Workers</a><br />
+      <a href="/admin/settings">Site Settings</a>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <h2>Recent Admin Logs</h2>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Admin</th>
+            <th>Action</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% logs.forEach(log => { %>
+            <tr>
+              <td><%= log.name %></td>
+              <td><%= log.action %></td>
+              <td><%= log.created_at %></td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+<section class="page-hero">
+  <div class="container">
+    <h1>Your Profile</h1>
+    <p>Manage your account details and language preference.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <% if (errors.length) { %>
+      <div class="alert">
+        <% errors.forEach(error => { %>
+          <p><%= error.msg %></p>
+        <% }) %>
+      </div>
+    <% } %>
+    <div class="card">
+      <form method="POST" action="/profile" enctype="multipart/form-data">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <div class="grid-2">
+          <div>
+            <label>Name</label>
+            <input type="text" name="name" value="<%= user.name %>" />
+            <label>Email</label>
+            <input type="email" name="email" value="<%= user.email %>" />
+            <label>Language</label>
+            <select name="language">
+              <option value="en" <%= user.language === 'en' ? 'selected' : '' %>>English</option>
+              <option value="hi" <%= user.language === 'hi' ? 'selected' : '' %>>Hindi</option>
+            </select>
+          </div>
+          <div>
+            <label>Profile Photo</label>
+            <input type="file" name="photo" accept="image/*" />
+            <% if (user.photo_url) { %>
+              <img class="avatar" src="<%= user.photo_url %>" alt="Profile photo" />
+            <% } else { %>
+              <p class="muted">No photo uploaded.</p>
+            <% } %>
+          </div>
+        </div>
+        <button class="button primary" type="submit">Save Changes</button>
+      </form>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

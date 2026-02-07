@@ -1,0 +1,75 @@
+<%- include('../partials/header') %>
+<section class="page-hero">
+  <div class="container">
+    <h1>Manage Workers</h1>
+    <p>Assign tasks and monitor worker status.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <% if (errors.length) { %>
+      <div class="alert">
+        <% errors.forEach(error => { %>
+          <p><%= error.msg %></p>
+        <% }) %>
+      </div>
+    <% } %>
+    <div class="card">
+      <h2>Create Worker Assignment</h2>
+      <form method="POST" action="/admin/workers">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <div class="grid-3">
+          <select name="user_id" required>
+            <% users.forEach(user => { %>
+              <option value="<%= user.id %>"><%= user.name %></option>
+            <% }) %>
+          </select>
+          <input type="text" name="assigned_tasks" placeholder="Assigned tasks" required />
+          <select name="status" required>
+            <option value="active">Active</option>
+            <option value="paused">Paused</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+        <button class="button primary" type="submit">Assign Worker</button>
+      </form>
+    </div>
+    <div class="card">
+      <h2>All Workers</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Worker</th>
+            <th>Email</th>
+            <th>Tasks</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% workers.forEach(worker => { %>
+            <tr>
+              <form method="POST" action="/admin/workers/<%= worker.id %>">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                <td><%= worker.name %></td>
+                <td><%= worker.email %></td>
+                <td><input type="text" name="assigned_tasks" value="<%= worker.assigned_tasks %>" /></td>
+                <td>
+                  <select name="status">
+                    <option value="active" <%= worker.status === 'active' ? 'selected' : '' %>>Active</option>
+                    <option value="paused" <%= worker.status === 'paused' ? 'selected' : '' %>>Paused</option>
+                    <option value="completed" <%= worker.status === 'completed' ? 'selected' : '' %>>Completed</option>
+                  </select>
+                </td>
+                <td>
+                  <button class="button ghost" type="submit">Update</button>
+                </td>
+              </form>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

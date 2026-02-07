@@ -1,0 +1,35 @@
+<%- include('../partials/header') %>
+<section class="page-hero">
+  <div class="container">
+    <h1>Site Settings</h1>
+    <p>Manage global configuration.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Value</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% settings.forEach(setting => { %>
+            <tr>
+              <form method="POST" action="/admin/settings/<%= setting.id %>">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                <td><%= setting.key_name %></td>
+                <td><input type="text" name="value_text" value="<%= setting.value_text %>" /></td>
+                <td><button class="button ghost" type="submit">Save</button></td>
+              </form>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

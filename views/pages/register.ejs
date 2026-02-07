@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+<section class="section auth">
+  <div class="container">
+    <div class="auth-card">
+      <h1>Create your account</h1>
+      <p>Your UID will be generated automatically after registration.</p>
+      <% if (errors.length) { %>
+        <div class="alert">
+          <% errors.forEach(error => { %>
+            <p><%= error.msg %></p>
+          <% }) %>
+        </div>
+      <% } %>
+      <form method="POST" action="/register">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <label>Name</label>
+        <input type="text" name="name" value="<%= values.name || '' %>" required />
+        <label>Email</label>
+        <input type="email" name="email" value="<%= values.email || '' %>" required />
+        <label>Password</label>
+        <input type="password" name="password" required />
+        <button class="button primary" type="submit">Register</button>
+      </form>
+      <p class="small">Already have an account? <a href="/login">Login</a></p>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>

@@ -1,0 +1,88 @@
+<%- include('../partials/header') %>
+<section class="page-hero">
+  <div class="container">
+    <h1>Manage Users</h1>
+    <p>Create, update, and remove user accounts.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <% if (errors.length) { %>
+      <div class="alert">
+        <% errors.forEach(error => { %>
+          <p><%= error.msg %></p>
+        <% }) %>
+      </div>
+    <% } %>
+    <div class="card">
+      <h2>Create User</h2>
+      <form method="POST" action="/admin/users">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <div class="grid-3">
+          <input type="text" name="uid" placeholder="UID" required />
+          <input type="text" name="name" placeholder="Name" required />
+          <input type="email" name="email" placeholder="Email" required />
+          <input type="password" name="password" placeholder="Temporary Password" required />
+          <select name="role" required>
+            <option value="user">User</option>
+            <option value="worker">Worker</option>
+            <option value="admin">Admin</option>
+          </select>
+          <select name="language" required>
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+          </select>
+        </div>
+        <button class="button primary" type="submit">Create User</button>
+      </form>
+    </div>
+    <div class="card">
+      <h2>All Users</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>UID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Language</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% users.forEach(user => { %>
+            <tr>
+              <form method="POST" action="/admin/users/<%= user.id %>">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                <td><%= user.uid %></td>
+                <td><input type="text" name="name" value="<%= user.name %>" /></td>
+                <td><input type="email" name="email" value="<%= user.email %>" /></td>
+                <td>
+                  <select name="role">
+                    <option value="user" <%= user.role === 'user' ? 'selected' : '' %>>User</option>
+                    <option value="worker" <%= user.role === 'worker' ? 'selected' : '' %>>Worker</option>
+                    <option value="admin" <%= user.role === 'admin' ? 'selected' : '' %>>Admin</option>
+                  </select>
+                </td>
+                <td>
+                  <select name="language">
+                    <option value="en" <%= user.language === 'en' ? 'selected' : '' %>>EN</option>
+                    <option value="hi" <%= user.language === 'hi' ? 'selected' : '' %>>HI</option>
+                  </select>
+                </td>
+                <td>
+                  <button class="button ghost" type="submit">Update</button>
+              </form>
+                  <form method="POST" action="/admin/users/<%= user.id %>/delete">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+                    <button class="button danger" type="submit">Delete</button>
+                  </form>
+                </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<%- include('../partials/footer') %>
